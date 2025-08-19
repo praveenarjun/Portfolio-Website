@@ -127,4 +127,11 @@ if (MEDIUM_USERNAME !== undefined && MEDIUM_USERNAME !== "") {
   });
 
   req.end();
+} else {
+  // Create empty blogs.json when no Medium username is provided
+  const emptyBlogsData = JSON.stringify({"status":"ok","feed":{"url":"","title":"","link":"","author":"","description":"","image":""},"items":[]});
+  fs.writeFile("./public/blogs.json", emptyBlogsData, function (err) {
+    if (err) return console.log(err);
+    console.log("created empty blogs.json file");
+  });
 }
