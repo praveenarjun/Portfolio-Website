@@ -26,7 +26,7 @@ const greeting = {
     "A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks."
   ),
   resumeLink:
-    "https://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing", // Set to empty to hide the button
+    "https://docs.google.com/document/d/1roWBKar-4dfiyteH2BdsW8aSuR5YZUqjIvwLOB_r55I/edit?usp=sharing", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
@@ -164,7 +164,7 @@ const educationInfo = {
         "Got 9.2/10 CGPA on Second Semester on 20 credits",
         "Got 9.3/10 CGPA on Third Semester on 20 credits",
         "Got 9.8/10 CGPA on Fourth Semester on 20 credits",
-        "Got 8.7/10 CGPA on Fourth Semester on 20 credits",
+        "Got 8.7/10 CGPA on fifth Semester on 20 credits",
         "Selected for Semester Exchange program and presented research findings at an international conference and continued study in Malaysia",
       ],
     }
@@ -197,11 +197,23 @@ const techStack = {
 const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
+    {
+      role: "Product Manager Intern",
+      company: "Innovatiview",
+      companylogo: require("./assets/images/Innovatiview.png"),
+      date: "March 2025 – June 2025",
+      desc: "Played a key role in the product management lifecycle, focusing on aligning engineering execution with strategic business objectives and user-centric design.",
+      descBullets: [
+         "Developed and prioritized the product backlog by authoring detailed user stories and technical requirements, directly managing the feature pipeline for the development team.",
+          "Acted as the key liaison between front-end, back-end, and design teams, facilitating communication to ensure project milestones were met on schedule.",
+           "Conducted market research and competitive analysis to provide data-driven insights that directly influenced the product roadmap and feature prioritization."
+]
+    },
      {
       role: "Research Intern",
       company: "Georgia Tech",
       companylogo: require("./assets/images/Georgia-Institute-of-Technology-Seal-Logo.webp"),
-      date: "May 2017 – May 2018",
+      date: "June 2025 – September 2025",
       desc: "Georgia Institute of Technology Atlanta, USA Working Under Dr.Vijay Madisetti",
        descBullets: [
         "Working onsite in Atlanta, collaborating with a team of researchers.",
@@ -213,7 +225,7 @@ const workExperiences = {
       role: "FrontEnd Engineer Intern",
       company: "InQuantum AI",
       companylogo: require("./assets/images/inquanutum.png"),
-      date: "May 2025 – August 2025",
+      date: "March 2025 – June 2025",
       desc: "AI Tech Solution Company In Malaysia",
       descBullets: [
         "Working in Frontend team in making web application with perfect techstack like nextjs,hooks ",
@@ -225,7 +237,7 @@ const workExperiences = {
       role: "Machine Learning Intern",
       company: "1stop IIT Delhi",
       companylogo: require("./assets/images/1.stop-IIt Delhi.png"),
-      date: "april 2023 – july 2023",
+      date: "April 2023 – July 2023",
       desc: "A Machine learning club by IIT Delhi",
       descBullets: [
         "Worked on various machine learning projects.",
