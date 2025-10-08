@@ -200,7 +200,7 @@ const workExperiences = {
     {
       role: "Product Manager Intern",
       company: "Innovatiview",
-      companylogo: require("./assets/images/Innovatiview.png"),
+      companylogo: require("./assets/images/innovatiview.png"),
       date: "March 2025 – June 2025",
       desc: "Played a key role in the product management lifecycle, focusing on aligning engineering execution with strategic business objectives and user-centric design.",
       descBullets: [
