@@ -37,11 +37,21 @@ jobs:
       - name: Install and Build 🔧 # Build the Project
         run: |
           npm install
-          npm run build || echo "Build completed with warnings"
+          npm run build
         continue-on-error: false
+      
+      - name: Verify Build Output 🔍
+        run: |
+          echo "Build contents:"
+          ls -la build/
+          echo "Checking for index.html:"
+          test -f build/index.html && echo "✓ index.html exists" || echo "✗ index.html missing"
+      
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }} # This is provided by GitHub.
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true
+          SINGLE_COMMIT: true
