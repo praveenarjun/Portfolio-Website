@@ -11,6 +11,12 @@ export default function GithubProfileCard({prof}) {
   } else {
     prof.hireable = "No";
   }
+  
+  // Use profileImageUrl from contactInfo if provided, otherwise use GitHub API avatarUrl
+  const profileImage = contactInfo.profileImageUrl && contactInfo.profileImageUrl.trim() !== "" 
+    ? contactInfo.profileImageUrl 
+    : (prof.avatarUrl || "");
+  
   return (
     <Fade bottom duration={1000} distance="20px">
       <div className="main" id="contact">
@@ -49,11 +55,13 @@ export default function GithubProfileCard({prof}) {
             <SocialMedia />
           </div>
           <div className="image-content-profile">
-            <img
-              src={prof.avatarUrl}
-              alt={prof.name}
-              className="profile-image"
-            />
+            {profileImage && (
+              <img
+                src={profileImage}
+                alt={prof.name || "Profile"}
+                className="profile-image"
+              />
+            )}
           </div>
         </div>
       </div>

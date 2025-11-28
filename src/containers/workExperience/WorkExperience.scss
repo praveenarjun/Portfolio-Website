@@ -1,12 +1,46 @@
 .experience-cards-div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1rem 1rem;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1.5rem;
+  padding: 1rem 1rem;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* Contain the scroll within this element only */
+  position: relative;
+  
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 10px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.7);
+  }
 }
 
 .experience-heading {
   font-size: 56px;
   font-weight: 400;
+}
+
+#experience {
+  overflow-x: hidden; /* Prevent horizontal scroll on the section */
+  width: 100%;
 }
 
 .experience-container {
@@ -15,10 +49,14 @@
   padding: 20px 10px;
   margin: 0px auto;
   margin-top: 2rem;
+  overflow: hidden; /* Prevent any overflow from affecting the page */
 }
 
 .experience-container > * {
   flex: 1;
+  width: 100%;
+  overflow: hidden; /* Ensure child doesn't cause page scroll */
+  min-width: 0; /* Allow flex child to shrink below content size */
 }
 
 /* Media Query */
@@ -33,5 +71,10 @@
   .experience-heading {
     font-size: 30px;
     text-align: center;
+  }
+  
+  .experience-cards-div {
+    gap: 1rem;
+    padding: 0.5rem 1rem;
   }
 }

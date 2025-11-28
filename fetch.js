@@ -16,10 +16,32 @@ const ERR = {
   requestFailedMedium:
     "The request to Medium didn't succeed. Check if Medium username in your .env file is correct."
 };
-if (USE_GITHUB_DATA === "true") {
-  if (GITHUB_USERNAME === undefined) {
-    throw new Error(ERR.noUserName);
+
+// Create default profile.json if GitHub data is not enabled or username is missing
+if (USE_GITHUB_DATA !== "true" || GITHUB_USERNAME === undefined) {
+  if (USE_GITHUB_DATA === "true" && GITHUB_USERNAME === undefined) {
+    console.warn(ERR.noUserName);
+    console.warn("Continuing without GitHub data. Using default profile.json");
   }
+  const defaultProfileData = JSON.stringify({
+    data: {
+      user: {
+        name: "",
+        bio: "",
+        avatarUrl: "",
+        location: "",
+        pinnedItems: {
+          totalCount: 0,
+          edges: []
+        }
+      }
+    }
+  });
+  fs.writeFileSync("./public/profile.json", defaultProfileData);
+  console.log("created default profile.json file");
+}
+
+if (USE_GITHUB_DATA === "true" && GITHUB_USERNAME !== undefined) {
 
   console.log(`Fetching profile data for ${GITHUB_USERNAME}`);
   var data = JSON.stringify({
@@ -72,22 +94,64 @@ if (USE_GITHUB_DATA === "true") {
 
     console.log(`statusCode: ${res.statusCode}`);
     if (res.statusCode !== 200) {
-      throw new Error(ERR.requestFailed);
+      console.error(ERR.requestFailed);
+      console.warn("Continuing without GitHub data. Using default profile.json");
+      const defaultProfileData = JSON.stringify({
+        data: {
+          user: {
+            name: "",
+            bio: "",
+            avatarUrl: "",
+            location: "",
+            pinnedItems: {
+              totalCount: 0,
+              edges: []
+            }
+          }
+        }
+      });
+      fs.writeFileSync("./public/profile.json", defaultProfileData);
+      return;
     }
 
     res.on("data", d => {
       data += d;
     });
     res.on("end", () => {
-      fs.writeFile("./public/profile.json", data, function (err) {
-        if (err) return console.log(err);
-        console.log("saved file to public/profile.json");
-      });
+      try {
+        const parsedData = JSON.parse(data);
+        fs.writeFile("./public/profile.json", JSON.stringify(parsedData), function (err) {
+          if (err) {
+            console.error("Error writing profile.json:", err);
+            return;
+          }
+          console.log("saved file to public/profile.json");
+        });
+      } catch (parseError) {
+        console.error("Error parsing GitHub response:", parseError);
+        console.warn("Continuing without GitHub data. Using default profile.json");
+      }
     });
   });
 
   req.on("error", error => {
-    throw error;
+    console.error("GitHub request error:", error.message);
+    console.warn("Continuing without GitHub data. Using default profile.json");
+    const defaultProfileData = JSON.stringify({
+      data: {
+        user: {
+          name: "",
+          bio: "",
+          avatarUrl: "",
+          location: "",
+          pinnedItems: {
+            totalCount: 0,
+            edges: []
+          }
+        }
+      }
+    });
+    fs.writeFileSync("./public/profile.json", defaultProfileData);
   });
 
   req.write(data);
@@ -108,7 +172,11 @@ if (MEDIUM_USERNAME !== undefined && MEDIUM_USERNAME !== "") {
 
     console.log(`statusCode: ${res.statusCode}`);
     if (res.statusCode !== 200) {
-      throw new Error(ERR.requestMediumFailed);
+      console.error(ERR.requestFailedMedium);
+      console.warn("Continuing without Medium data. Using empty blogs.json");
+      const emptyBlogsData = JSON.stringify({"status":"ok","feed":{"url":"","title":"","link":"","author":"","description":"","image":""},"items":[]});
+      fs.writeFileSync("./public/blogs.json", emptyBlogsData);
+      return;
     }
 
     res.on("data", d => {
@@ -116,14 +184,20 @@ if (MEDIUM_USERNAME !== undefined && MEDIUM_USERNAME !== "") {
     });
     res.on("end", () => {
       fs.writeFile("./public/blogs.json", mediumData, function (err) {
-        if (err) return console.log(err);
+        if (err) {
+          console.error("Error writing blogs.json:", err);
+          return;
+        }
         console.log("saved file to public/blogs.json");
       });
     });
   });
 
   req.on("error", error => {
-    throw error;
+    console.error("Medium request error:", error.message);
+    console.warn("Continuing without Medium data. Using empty blogs.json");
+    const emptyBlogsData = JSON.stringify({"status":"ok","feed":{"url":"","title":"","link":"","author":"","description":"","image":""},"items":[]});
+    fs.writeFileSync("./public/blogs.json", emptyBlogsData);
   });
 
   req.end();

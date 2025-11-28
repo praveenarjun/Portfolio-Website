@@ -6,6 +6,10 @@
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  min-width: 350px;
+  max-width: 350px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experience-card-dark {
@@ -14,10 +18,20 @@
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  min-width: 350px;
+  max-width: 350px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experience-card:hover {
   box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+  transform: translateY(-5px);
+}
+
+.experience-card-dark:hover {
+  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+  transform: translateY(-5px);
 }
 
 .experience-banner {
@@ -141,6 +155,12 @@
 }
 
 @media (max-width: 768px) {
+  .experience-card,
+  .experience-card-dark {
+    min-width: 300px;
+    max-width: 300px;
+  }
+  
   .experience-text-role {
     font-size: 22px;
   }

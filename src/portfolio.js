@@ -201,22 +201,21 @@ const workExperiences = {
       role: "Product Manager Intern",
       company: "Innovatiview",
       companylogo: require("./assets/images/innovatiview.png"),
-      date: "March 2025 – June 2025",
-      desc: "Played a key role in the product management lifecycle, focusing on aligning engineering execution with strategic business objectives and user-centric design.",
+      date: "October 2025 – Present",
+      desc: "Noida Sector 127, Delhi",
       descBullets: [
-         "Developed and prioritized the product backlog by authoring detailed user stories and technical requirements, directly managing the feature pipeline for the development team.",
-          "Acted as the key liaison between front-end, back-end, and design teams, facilitating communication to ensure project milestones were met on schedule.",
-           "Conducted market research and competitive analysis to provide data-driven insights that directly influenced the product roadmap and feature prioritization."
-]
+        "Working on Production Developement creating application based on requirements",
+        "Collaborating with the team to develop new features and improve the application."
+      ]
     },
      {
       role: "Research Intern",
       company: "Georgia Tech",
       companylogo: require("./assets/images/Georgia-Institute-of-Technology-Seal-Logo.webp"),
-      date: "June 2025 – September 2025",
+      date: "August 2025 – October 2025",
       desc: "Georgia Institute of Technology Atlanta, USA Working Under Dr.Vijay Madisetti",
        descBullets: [
-        "Working onsite in Atlanta, collaborating with a team of researchers.",
+        "Working remotely and collaborating with a team of researchers.",
         "Working on Image Generation and Improving Bias Issue in image generation",
         "Assigned as J1 Research Visiting Scholar visa by USA Government"
       ]
@@ -225,7 +224,7 @@ const workExperiences = {
       role: "FrontEnd Engineer Intern",
       company: "InQuantum AI",
       companylogo: require("./assets/images/inquanutum.png"),
-      date: "March 2025 – June 2025",
+      date: "May 2025 – August 2025",
       desc: "AI Tech Solution Company In Malaysia",
       descBullets: [
         "Working in Frontend team in making web application with perfect techstack like nextjs,hooks ",
@@ -415,7 +414,10 @@ const contactInfo = {
   subtitle:
     "Discuss a project or just want to say hi? My Inbox is open for all.",
   number: "+91 6301796779",
-  email_address: "sreepraveenchalla@gmail.com"
+  email_address: "sreepraveenchalla@gmail.com",
+  // Add your GitHub profile image URL here, or leave empty to use GitHub API data
+  // You can get your GitHub profile image from: https://github.com/{username}.png
+  profileImageUrl: "https://github.com/praveenarjun.png" // Set to empty string "" to use GitHub API data instead
 };
 
 // Twitter Section
