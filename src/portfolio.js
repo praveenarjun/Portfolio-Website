@@ -159,7 +159,7 @@ const educationInfo = {
       duration: "September 2022 - August 2026",
       desc: "Selected for Scholarship Program upto 50% of total Fees and continued to excel in academics. every time more than 9/10 CGPA",
       descBullets: [
-        "Participated And Published Journal in Spinger and IEEE On EEG Signals and Emotion Detection Using brain Signals",
+        "Participated and published a journal in Springer and IEEE on EEG signals and emotion detection using brain signals",
         "Participated in Hackathons and got 1st Prize in Hackathon conducted by Bennett University",
         "Got 8.4/10 CGPA on First Semester on 20 credits",
         "Got 9.2/10 CGPA on Second Semester on 20 credits",
@@ -266,7 +266,7 @@ const bigProjects = {
       image: require("./assets/images/encryptic.png"),
       projectName: "Encryptic",
       projectDesc:
-        "Work on Machine learning algorithm for security bridges and advance algorithm ",
+        "Worked on machine learning algorithms for security breach detection and algorithm improvements.",
       footerLink: [
         {
           name: "Visit Website",
@@ -337,7 +337,7 @@ const achievementSection = {
     {
       title: "IBM Certified Data Engineer",
       subtitle:
-        "Completed Certifcation from BIG Data By IBM for Data Engineering and Data Scientist",
+        "Completed Certification in Big Data by IBM for Data Engineering and Data Science",
       image: require("./assets/images/IBM_logo.webp"),
       imageAlt: "PWA Logo",
       footerLink: [
@@ -385,9 +385,9 @@ const talkSection = {
 
   talks: [
     {
-      title: "A page which shows malaysian beauties",
+      title: "A Page Showing Malaysian Beauties",
       subtitle:
-        "A Business Analytic Project Where publishing a blob doing analytics in google analytics",
+        "A business analytics project demonstrating publishing a blog and performing analytics in Google Analytics",
       slides_url:
         "https://clouthing.wordpress.com/?_gl=1*1c54my8*_gcl_au*OTI5NDU1NjgzLjE3NTU1OTk0OTA.#"
     }
