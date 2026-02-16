@@ -1,7 +1,7 @@
 name: Build and Deploy
 env:
   CI: false
-  GITHUB_USERNAME: "praveenarjun"
+  GITHUB_USERNAME: ${{ github.repository_owner }}
   REACT_APP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is automatically set by Github Actions
   USE_GITHUB_DATA: "true"
   MEDIUM_USERNAME: "" # Add your Medium username here if you want to fetch blogs
@@ -22,17 +22,14 @@ jobs:
       id-token: write
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3 # If you're using actions/checkout@v3 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: Setup Node.js 🔧
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
-
-      - name: Update npm 🚀
-        run: npm install -g npm@latest
+          node-version: 20
 
       - name: Install and Build 🔧 # Build the Project
         run: |
@@ -43,6 +40,18 @@ jobs:
       - name: Copy 404.html for SPA routing 🔄
         run: |
           cp public/404.html build/404.html || echo "404.html already exists or not found"
+
+      - name: Update 404.html redirection logic
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          OWNER="${{ github.repository_owner }}"
+          if [[ "$REPO_NAME" == "$OWNER.github.io" ]]; then
+            SEGMENTS=0
+          else
+            SEGMENTS=1
+          fi
+          echo "Setting pathSegmentsToKeep to $SEGMENTS for repo $REPO_NAME"
+          sed -i "s/var pathSegmentsToKeep = 1;/var pathSegmentsToKeep = $SEGMENTS;/g" build/404.html || true
       
       - name: Verify Build Output 🔍
         run: |
