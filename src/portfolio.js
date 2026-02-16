@@ -158,15 +158,16 @@ const educationInfo = {
       subHeader: "Bachelor of Science in Computer Science",
       duration: "September 2022 - August 2026",
       desc: "Selected for Scholarship Program upto 50% of total Fees and continued to excel in academics. every time more than 9/10 CGPA",
-      descBullets: ["Participated And Published Journal in Spinger and IEEE On EEG Signals and Emotion Detection Using brain Signals",
+      descBullets: [
+        "Participated And Published Journal in Spinger and IEEE On EEG Signals and Emotion Detection Using brain Signals",
         "Participated in Hackathons and got 1st Prize in Hackathon conducted by Bennett University",
         "Got 8.4/10 CGPA on First Semester on 20 credits",
         "Got 9.2/10 CGPA on Second Semester on 20 credits",
         "Got 9.3/10 CGPA on Third Semester on 20 credits",
         "Got 9.8/10 CGPA on Fourth Semester on 20 credits",
         "Got 8.7/10 CGPA on fifth Semester on 20 credits",
-        "Selected for Semester Exchange program and presented research findings at an international conference and continued study in Malaysia",
-      ],
+        "Selected for Semester Exchange program and presented research findings at an international conference and continued study in Malaysia"
+      ]
     }
   ]
 };
@@ -208,13 +209,13 @@ const workExperiences = {
         "Collaborating with the team to develop new features and improve the application."
       ]
     },
-     {
+    {
       role: "Research Intern",
       company: "Georgia Tech",
       companylogo: require("./assets/images/Georgia-Institute-of-Technology-Seal-Logo.webp"),
       date: "August 2025 – October 2025",
       desc: "Georgia Institute of Technology Atlanta, USA Working Under Dr.Vijay Madisetti",
-       descBullets: [
+      descBullets: [
         "Working remotely and collaborating with a team of researchers.",
         "Working on Image Generation and Improving Bias Issue in image generation",
         "Assigned as J1 Research Visiting Scholar visa by USA Government"
@@ -231,7 +232,7 @@ const workExperiences = {
         "Collaborating with backend team to integrate APIs"
       ]
     },
-   
+
     {
       role: "Machine Learning Intern",
       company: "1stop IIT Delhi",
@@ -264,7 +265,8 @@ const bigProjects = {
     {
       image: require("./assets/images/encryptic.png"),
       projectName: "Encryptic",
-      projectDesc: "Work on Machine learning algorithm for security bridges and advance algorithm ",
+      projectDesc:
+        "Work on Machine learning algorithm for security bridges and advance algorithm ",
       footerLink: [
         {
           name: "Visit Website",
@@ -334,11 +336,15 @@ const achievementSection = {
 
     {
       title: "IBM Certified Data Engineer",
-      subtitle: "Completed Certifcation from BIG Data By IBM for Data Engineering and Data Scientist",
+      subtitle:
+        "Completed Certifcation from BIG Data By IBM for Data Engineering and Data Scientist",
       image: require("./assets/images/IBM_logo.webp"),
       imageAlt: "PWA Logo",
       footerLink: [
-        {name: "Certification", url: "https://www.coursera.org/account/accomplishments/certificate/QX910OB5CID2"}
+        {
+          name: "Certification",
+          url: "https://www.coursera.org/account/accomplishments/certificate/QX910OB5CID2"
+        }
       ]
     }
   ],
@@ -380,8 +386,10 @@ const talkSection = {
   talks: [
     {
       title: "A page which shows malaysian beauties",
-      subtitle: "A Business Analytic Project Where publishing a blob doing analytics in google analytics",
-      slides_url: "https://clouthing.wordpress.com/?_gl=1*1c54my8*_gcl_au*OTI5NDU1NjgzLjE3NTU1OTk0OTA.#",
+      subtitle:
+        "A Business Analytic Project Where publishing a blob doing analytics in google analytics",
+      slides_url:
+        "https://clouthing.wordpress.com/?_gl=1*1c54my8*_gcl_au*OTI5NDU1NjgzLjE3NTU1OTk0OTA.#"
     }
   ],
   display: true // Set false to hide this section, defaults to true

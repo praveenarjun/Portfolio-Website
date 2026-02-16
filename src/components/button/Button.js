@@ -4,11 +4,13 @@ import "./Button.scss";
 export default function Button({text, className, href, newTab, download}) {
   return (
     <div className={className}>
-      <a 
-        className="main-button" 
-        href={href} 
+      <a
+        className="main-button"
+        href={href}
         target={newTab && "_blank"}
-        download={download || (href && href.includes('.pdf') ? "Resume.pdf" : undefined)}
+        download={
+          download || (href && href.includes(".pdf") ? "Resume.pdf" : undefined)
+        }
       >
         {text}
       </a>

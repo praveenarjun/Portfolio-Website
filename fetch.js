@@ -42,7 +42,6 @@ if (USE_GITHUB_DATA !== "true" || GITHUB_USERNAME === undefined) {
 }
 
 if (USE_GITHUB_DATA === "true" && GITHUB_USERNAME !== undefined) {
-
   console.log(`Fetching profile data for ${GITHUB_USERNAME}`);
   var data = JSON.stringify({
     query: `
@@ -95,7 +94,9 @@ if (USE_GITHUB_DATA === "true" && GITHUB_USERNAME !== undefined) {
     console.log(`statusCode: ${res.statusCode}`);
     if (res.statusCode !== 200) {
       console.error(ERR.requestFailed);
-      console.warn("Continuing without GitHub data. Using default profile.json");
+      console.warn(
+        "Continuing without GitHub data. Using default profile.json"
+      );
       const defaultProfileData = JSON.stringify({
         data: {
           user: {
@@ -120,16 +121,22 @@ if (USE_GITHUB_DATA === "true" && GITHUB_USERNAME !== undefined) {
     res.on("end", () => {
       try {
         const parsedData = JSON.parse(data);
-        fs.writeFile("./public/profile.json", JSON.stringify(parsedData), function (err) {
-          if (err) {
-            console.error("Error writing profile.json:", err);
-            return;
+        fs.writeFile(
+          "./public/profile.json",
+          JSON.stringify(parsedData),
+          function (err) {
+            if (err) {
+              console.error("Error writing profile.json:", err);
+              return;
+            }
+            console.log("saved file to public/profile.json");
           }
-          console.log("saved file to public/profile.json");
-        });
+        );
       } catch (parseError) {
         console.error("Error parsing GitHub response:", parseError);
-        console.warn("Continuing without GitHub data. Using default profile.json");
+        console.warn(
+          "Continuing without GitHub data. Using default profile.json"
+        );
       }
     });
   });
@@ -174,7 +181,18 @@ if (MEDIUM_USERNAME !== undefined && MEDIUM_USERNAME !== "") {
     if (res.statusCode !== 200) {
       console.error(ERR.requestFailedMedium);
       console.warn("Continuing without Medium data. Using empty blogs.json");
-      const emptyBlogsData = JSON.stringify({"status":"ok","feed":{"url":"","title":"","link":"","author":"","description":"","image":""},"items":[]});
+      const emptyBlogsData = JSON.stringify({
+        status: "ok",
+        feed: {
+          url: "",
+          title: "",
+          link: "",
+          author: "",
+          description: "",
+          image: ""
+        },
+        items: []
+      });
       fs.writeFileSync("./public/blogs.json", emptyBlogsData);
       return;
     }
@@ -196,14 +214,36 @@ if (MEDIUM_USERNAME !== undefined && MEDIUM_USERNAME !== "") {
   req.on("error", error => {
     console.error("Medium request error:", error.message);
     console.warn("Continuing without Medium data. Using empty blogs.json");
-    const emptyBlogsData = JSON.stringify({"status":"ok","feed":{"url":"","title":"","link":"","author":"","description":"","image":""},"items":[]});
+    const emptyBlogsData = JSON.stringify({
+      status: "ok",
+      feed: {
+        url: "",
+        title: "",
+        link: "",
+        author: "",
+        description: "",
+        image: ""
+      },
+      items: []
+    });
     fs.writeFileSync("./public/blogs.json", emptyBlogsData);
   });
 
   req.end();
 } else {
   // Create empty blogs.json when no Medium username is provided
-  const emptyBlogsData = JSON.stringify({"status":"ok","feed":{"url":"","title":"","link":"","author":"","description":"","image":""},"items":[]});
+  const emptyBlogsData = JSON.stringify({
+    status: "ok",
+    feed: {
+      url: "",
+      title: "",
+      link: "",
+      author: "",
+      description: "",
+      image: ""
+    },
+    items: []
+  });
   fs.writeFile("./public/blogs.json", emptyBlogsData, function (err) {
     if (err) return console.log(err);
     console.log("created empty blogs.json file");
